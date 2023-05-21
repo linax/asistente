@@ -31,6 +31,9 @@ async function runChat() {
 
     console.log("Chat with AI. Type 'exit' to finish the conversation.\n");
 
+    let aiPrompt = "The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly and is useful for people with dissabilities.\n\nHuman: Hello, who are you?\nAI: I am an AI created by OpenAI. How can I help you today?\nHuman: ";
+    console.log(aiPrompt);
+
     let userMessage = await new Promise((resolve) => {
       rl.question("You: ", (answer) => {
         resolve(answer.trim());
@@ -38,10 +41,12 @@ async function runChat() {
     });
 
     while (userMessage.toLowerCase() !== "exit") {
-      const prompt = "The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly.\n\nHuman: Hello, who are you?\nAI: I am an AI created by OpenAI. How can I help you today?\nHuman: ";
+      const prompt = `${aiPrompt}\nHuman: ${userMessage}\nAI: `;
       const aiResponse = await generateAIResponse(prompt);
 
       console.log(`AI: ${aiResponse}`);
+
+      aiPrompt = `Human: ${userMessage}\nAI: ${aiResponse}`;
 
       userMessage = await new Promise((resolve) => {
         rl.question("You: ", (answer) => {
