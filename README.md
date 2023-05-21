@@ -1,2 +1,2 @@
 # asistente
-openai assitant
+openai assistant
