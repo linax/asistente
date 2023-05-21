@@ -1,5 +1,4 @@
 require('dotenv').config();
-
 const { Configuration, OpenAIApi } = require("openai");
 const readline = require("readline");
 
@@ -39,7 +38,7 @@ async function runChat() {
     });
 
     while (userMessage.toLowerCase() !== "exit") {
-      const prompt = `The following is a conversation with an AI assistant. The assistant is helpful and try to help with assistance for dissability people .\n\nHuman: Hello, who are you?\nAI: I am an AI created by OpenAI. How can I help you today, do you need assistance?\nHuman:`;
+      const prompt = "The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly.\n\nHuman: Hello, who are you?\nAI: I am an AI created by OpenAI. How can I help you today?\nHuman: ";
       const aiResponse = await generateAIResponse(prompt);
 
       console.log(`AI: ${aiResponse}`);
