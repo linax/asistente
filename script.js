@@ -31,11 +31,11 @@ async function runChat() {
 
     console.log("Chat with AI. Type 'exit' to finish the conversation.\n");
 
-    let aiPrompt = "The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly and is useful for people with dissabilities.\n\nHuman: Hello, who are you?\nAI: I am an AI created by OpenAI. How can I help you today?\nHuman: ";
+    let aiPrompt = "The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly and is useful for people with dissabilities.\n\nHuman: Hello, who are you?\nAI: I am an AI created by OpenAI. How can I help you today?";
     console.log(aiPrompt);
 
     let userMessage = await new Promise((resolve) => {
-      rl.question("You: ", (answer) => {
+      rl.question("Human: ", (answer) => {
         resolve(answer.trim());
       });
     });
@@ -49,7 +49,7 @@ async function runChat() {
       aiPrompt = `Human: ${userMessage}\nAI: ${aiResponse}`;
 
       userMessage = await new Promise((resolve) => {
-        rl.question("You: ", (answer) => {
+        rl.question("Human: ", (answer) => {
           resolve(answer.trim());
         });
       });
